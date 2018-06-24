@@ -39,6 +39,7 @@ class NotificationBuilder(private val context: Context) {
     var autoCancel: Boolean? = null
     var priority: Int? = null
     var intent: PendingIntent? = null
+    var style: NotificationCompat.Style? = null
 
     fun show() {
         val valId = id ?: throw IllegalStateException("Id of notification must be defined")
@@ -53,6 +54,7 @@ class NotificationBuilder(private val context: Context) {
             autoCancel?.let { builder.setAutoCancel(it) }
             priority?.let { builder.priority = it }
             intent?.let { builder.setContentIntent(it) }
+            style?.let { builder.setStyle(style) }
         }
 
         notificationManager.notify(valId, builder.build())
@@ -69,6 +71,8 @@ class NotificationBuilder(private val context: Context) {
     fun intent(context: Context, javaClass: Class<out Activity>, requestCode: Int = 0, flags: Int = 0) {
         intent = PendingIntent.getActivity(context, requestCode, Intent(context, javaClass), flags)
     }
+
+    fun bigText(text: String) = NotificationCompat.BigTextStyle().bigText(text)
 
 }
 
