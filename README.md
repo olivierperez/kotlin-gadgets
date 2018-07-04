@@ -1,6 +1,6 @@
 # kotlin-gadgets
 
-Some gadgets I may use in severals Kotlin projetcs.
+Some gadgets I may use in severals Kotlin projects.
 
 ## Kotlin DSL Android
 
