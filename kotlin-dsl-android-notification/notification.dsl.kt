@@ -61,10 +61,8 @@ class NotificationBuilder(private val context: Context) {
     }
 
     fun channel(id: String, block: ChannelBuilder.() -> Unit) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            channelBuilder = ChannelBuilder(id).apply {
-                block()
-            }
+        channelBuilder = ChannelBuilder(id).apply {
+            block()
         }
     }
 
